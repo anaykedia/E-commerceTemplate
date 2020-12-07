@@ -1,0 +1,244 @@
+﻿<html>
+<head>
+
+<!--The <title> tag is used to set the display name which is in the tab on top of the browser -->
+<title>
+   ShoeFactory - Your Cart
+</title>
+
+<!--This is used to set the Unicode Transformation format to 8 bit -->
+   <meta charset="UTF-8">
+
+<!--This is for setting the width of the webpage as the width of the devices screen in which it is viewed  -->
+   <meta name="viewport" content="width=device-width" initial-scale="1">
+
+<!--This is for linking the CSS and JQuery to the website, However JQuery isn't used in the website -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<!--The background color of the webpage is determined in the body tag below -->
+<body style="background-color:#5e5e5e;">
+
+<!--The <nav> tag is used to create the navigation bar which is placed on top of the webpage -->
+<nav class="navbar navbar-inverse" >
+
+<!--The class container-fluid is used to set the width usage of all the elements in the tag as 100% -->
+   <div class="container-fluid">
+
+<!--The navbar-header class is used to add the headers in the navigation bar -->
+       <div class="navbar-header">
+           <a href="shoefactory.html" class="navbar-brand">ShoeFactory</a>
+       </div>
+       <div>
+           <ul class="nav navbar-nav">
+               <li><a href="shoefactory.html">Home</a></li>
+               <li><a href="shoefactorystore.html">Store</a></li>
+
+<!--A dropdown list is made by the use of the class dropdown -->
+               <li class="dropdown">
+
+<!--Here the dropdown list is set to be toggled by the header and a caret is added to it(an arrow pointing downwards) -->
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                       <li><a href="#">Basketball</a></li>
+                       <li><a href="#">Football</a></li>
+                   </ul>
+           </ul>
+<!--This is used to insert headers to the navigation bar on the right of the webpage -->
+           <ul class="nav navbar-nav navbar-right">
+               </li>
+
+<!--The class active makes the specific header look selected all the time and is used when the user is on the linked webpage-->
+               <li class="dropdown, active">
+
+<!--Here the the total number of items added to the cart is displayed, the function is predetermined in the JavaScript source -->
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Cart (<span id="cart"></span>)<span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                       <li><a href="#">Proceed to Checkout</a></li>
+                       <li><a href="cart.html">View Cart</a></li>
+                   </ul>
+               </li>
+           </ul>
+       </div>
+   </div>
+</nav>
+<div id="nice">
+
+<!--The main heading of the page is set here -->
+   <div style="text-align: center;color: #FAFAFA;"><h1>Your Cart</h1></div>
+
+<!--A line is added to divide the webpage -->
+   <hr style="margin-right:20em; margin-left: 20em">
+</div>
+<div>
+
+<!--This is where the cart is displayed, the functionality is present in the JavaScript source -->
+   <ul id="showCart" style="list-style-type: none; font-size: 22px; color: #101010;">
+
+   </ul>
+</div>
+
+<!--The class col-md-12 is used to set the width of the <div> tag to 100% -->
+<div class="col-md-12" style="text-align: center;">
+
+<!--A button is added to clear the cart. The function is predetermined in the JavaScript source -->
+   <button class="glyphicon glyphicon-remove-sign btn btn-default" onclick="clearCart()"></button>
+</div>
+<div class="col-md-12" style="text-align: center">
+
+<!--Another line is added to divide the different sections of the page -->
+   <hr style="margin-right:20em; margin-left: 20em">
+</div>
+
+<!--The class col-md-6 is used to set the width of the <div> tag to 50%-->
+<div class="col-md-6" style="text-align: center">
+
+<!--Here the totalCost of the cart is displayed, the functionality is present in the JavaScript source -->
+   <ul id="totalCost" style="list-style-type: none;font-size: 22px; color:#FFFFFF">
+
+   </ul>
+</div>
+<script>
+// A global variable cart is defined as an array
+   var cart = [];
+
+// An Item is defined as an object to have 3 properties: name, cost, count
+   var Item = function (name, cost, count) {
+       this.name = name
+       this.cost = cost
+       this.count = count
+   };
+
+// This function is used to increase the quantity of an existing item in cart by 1
+   function add(name, cost, count) {
+       var flag =false;
+       for(var i in cart){
+           if(cart[i].name === name){
+               cart[i].count += count;
+               flag = true;
+           }
+       }
+       if(!flag) {
+           var item = new Item(name, cost, count)
+           cart.push(item);
+       }
+
+/* Here if the function add() is used then the following functions are execute in order*/
+       countCart();
+       totalCost();
+       displayCart();
+       saveCart();
+   }
+
+/* This function is used to reduce the quantity of an existing item in cart by 1. If the items quantity reduces to 0 it is removed from the cart*/
+   function remove(name){
+       for(var i in cart){
+           if (cart[i].name === name) {
+               cart[i].count--;
+               if (cart[i].count === 0) {
+                   cart.splice(i, 1)
+               }
+               break;
+           }
+       }
+
+/* Here if the function remove() is used then the following functions are execute in order*/
+       countCart();
+       totalCost();
+       displayCart();
+       saveCart();
+   }
+
+// This function is used to remove all items from the cart
+   function clearCart(){
+       cart = [];
+
+/* Here if the function clearCart() is used then the following functions are execute in order*/
+       countCart();
+       displayCart();
+       totalCost();
+       saveCart();
+   }
+
+// This function is used to count the total number of items in the cart
+   function countCart(){
+       var totalCount = 0;
+       for(var i in cart){
+           totalCount += cart[i].count;
+       }
+
+/* Here the function is displayed in the navigation bar by obtaining the id of an html element.*/
+       document.getElementById("cart").innerHTML = totalCount;
+       return totalCount;
+   }
+
+// This function is used to calculate the total cost of the items in the cart
+   function totalCost(){
+       var cartCost = 0;
+       for(var i in cart){
+           cartCost += cart[i].cost * cart[i].count;
+       }
+
+// This function is displayed in the html by obtaining the id of the html element
+       document.getElementById("totalCost").innerHTML = "Total Cost = ₹"+cartCost;
+       return cartCost;
+   }
+
+/* The use of this function is to duplicate the cart and display it on the webpage so the cart doesn't get directly manipulated*/
+   function listCart(){
+       var cartCopy = [];
+       for(var i in cart){
+           var item = cart[i];
+           var itemCopy = {};
+           for(var p in item){
+               itemCopy[p] = item[p];
+           }
+
+/* This is to calculate the total cost of the carts duplicate and to push new items to the cart*/
+           itemCopy.total = item.cost * item.count;
+           cartCopy.push(itemCopy);
+       }
+       return cartCopy;
+   }
+
+/* This function is used to save the cart to the local storage so that data entered isn't lost, and it can be used in different webpages*/
+   function saveCart() {
+       localStorage.setItem("shoppingCart", JSON.stringify(cart));
+   }
+
+/* This function is used to fetch the data saved to local storage. Its main purpose is to retain the data in the cart even after the page is
+refreshed and to allow data to be used in other webpages*/
+   function loadCart() {
+       cart = JSON.parse(localStorage.getItem("shoppingCart"));
+
+   }
+
+/* This function is used to display the duplicate of the cart(listCart() functionis used)*/
+   function displayCart() {
+       var cartArray = listCart();
+       var output = "";
+
+/* Buttons are added for the add() function and remove() function for each item in the list respectively*/
+       for(var i in cartArray){
+           output += "<li><div class='col-md-6' style='text-align: center'>"+cartArray[i].name+" "+cartArray[i].count+
+               " x "+cartArray[i].cost+" = ₹"+cartArray[i].total+
+               "</div><div class='col-md-6'style='text-align: center'><button class='glyphicon-minus btn btn-default' onclick='remove(\""+cartArray[i].name+"\")'></button>"+
+               "<button class='glyphicon-plus btn btn-default' onclick='add(\""+cartArray[i].name+"\","+cartArray[i].cost+", 1)'></button>" +
+               "</div></li>"
+       }
+
+// The html id is obtained here and displayed in the webpage
+       document.getElementById("showCart").innerHTML = output;
+   }
+
+// These functions are executed as soon as the webpage is opened or refreshed
+   loadCart();
+   displayCart();
+   countCart();
+   totalCost();
+</script>
+
+</body>
+</html>

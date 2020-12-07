@@ -1,0 +1,381 @@
+
+<html>
+<head>
+
+<!--The <title> tag is used to set the display name which is in the tab on top of the browser -->
+    <title>
+        ShoeFactory - Store
+    </title>
+
+<!--This is used to set the Unicode Transformation format to 8 bit -->
+    <meta charset="UTF-8">
+
+<!--This is for setting the width of the webpage as the width of the devices screen in which it is viewed  -->
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+<!--This is for linking the CSS and JQuery to the website, However JQuery isn't used in the website -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<!--The background color of the webpage is determined in the body tag below -->
+<body style="background-color:#5e5e5e;">
+
+<!--The <nav> tag is used to create the navigation bar which is placed on top of the webpage -->
+<nav class="navbar navbar-inverse" >
+
+<!--The class container-fluid is used to set the width usage of all the elements in the tag as 100% -->
+    <div class="container-fluid">
+
+<!--The navbar-header class is used to add the headers in the navigation bar -->
+        <div class="navbar-header">
+            <a href="shoefactory.html" class="navbar-brand">ShoeFactory</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="shoefactory.html">Home</a></li>
+
+<!--The class active makes the specific header look selected all the time and is used when the user is on the linked webpage-->
+                <li class="active"><a href="shoefactorystore.html">Store</a></li>
+
+<!--A dropdown list is made by the use of the class dropdown -->
+                <li class="dropdown">
+
+<!--Here the dropdown list is set to be toggled by the header and a caret is added to it(an arrow pointing downwards) -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#basketball">Basketball</a></li>
+                        <li><a href="#football">Football</a></li>
+                    </ul>
+            </ul>
+
+<!--This is used to insert headers to the navigation bar on the right of the webpage -->
+            <ul class="nav navbar-nav navbar-right">
+                </li>
+                <li class="dropdown">
+
+<!--Here the the total number of items added to the cart is displayed, the function is predetermined in the JavaScript source -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Cart (<span id="cart" ></span>) <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Proceed to Checkout</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="nice">
+
+<!--The main heading of the page is set here -->
+<div style="text-align: center;color: #FAFAFA;"><h1>Store</h1></div>
+
+<!--A line is added to divide the webpage -->
+    <hr style="margin-right:20em; margin-left: 20em">
+
+
+    <a name="basketball"></a>
+    <div style="text-align: center; color: #FAFAFA;"><h3>Basketball</h3></div>
+
+<!--A row is created to add the images of the products. Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page -->
+        <div class="row">
+    <div class="col-md-4" style="text-align: center;">
+        <img src="lb14.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center;">
+        <img src="lb15.png" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center;">
+        <img src="nkdev.jpg" class="img-rounded ">
+    </div>
+</div>
+
+<!--A row is added to add the names and prices of the products. Each elements class is et to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+        <h4>Nike Lebron XIVs @ ₹12,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Nike Lebron XVs @ ₹12,500</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Nike Zoom Devosion @ ₹6,000</h4>
+    </div>
+
+</div>
+
+<!-- A row is added to add 2 buttons which will perform the add() function and remove() function predetermined in the JavaScript source.
+Each elements class is et to col-md-4 to set the width of their column to 1/3 of the page-->
+<div class="row">
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Lebron XIVs', 12000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Lebron XIVs')"></button>
+        </div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Lebron XVs', 12500, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Lebron XVs')"></button>
+        </div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Zoom Devosion', 6000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Zoom Devosion')"></button>
+        </div>
+    </div><div class="row">
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="sc3.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="sc4.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="ky2.jpg" class="img-rounded ">
+    </div>
+</div>
+
+<!--A row is created to add the images of the products. Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page -->
+
+<!--A row is added to add the names and prices of the products. Each elements class is et to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+        <h4>UnderArmour Curry 3s @ ₹7,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>UnderArmour Curry 4s @ ₹8,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Nike Kyrie 2s @ ₹5,000</h4>
+    </div>
+</div>
+
+<!-- A row is added to add 2 buttons which will perform the add() function and remove() function predetermined in the JavaScript source.
+    Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page-->
+<div class="row">
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('UnderArmour Curry 3s', 7000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('UnderArmour Curry 3s')"></button>      </div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('UnderArmour Curry 4s', 8000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('UnderArmour Curry 4s')"></button>        </div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Kyrie 2s', 5000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Kyrie 2s')"></button>        </div>
+    </div>
+
+<!--A row is created to add the images of the products. Each elements class is set to col-md-6 to set the width of their column to 50% of the page -->
+<div class="row">
+    <div class="col-md-6" style="text-align: center; padding-top: 10px;">
+        <img src="ky3.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-6" style="text-align: center; padding-top: 10px;">
+        <img src="ky4.jpeg" class="img-rounded ">
+    </div>
+
+</div>
+
+<!--A row is added to add the names and prices of the products. Each elements class is et to col-md-6 to set the width of their column to 50% of the page -->
+<div class="row">
+    <div class="col-md-6" style="text-align: center; color: #FFFFFF;">
+        <h4>Nike Kyrie 3s @ ₹8,000</h4>
+    </div>
+    <div class="col-md-6" style="text-align: center; color: #FFFFFF">
+        <h4>Nike Kyrie 4s @ ₹8,000</h4>
+    </div>
+</div>
+
+<!-- A row is added to add 2 buttons which will perform the add() function and remove() function predetermined in the JavaScript source.
+    Each elements class is set to col-md-6 to set the width of their column to 50% of the page-->
+<div class="row">
+    <div class="col-md-6" style="text-align: center; color: #FFFFFF;">
+        <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Kyrie 3s', 8000, 1)"></button>
+        <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Kyrie 3s')"></button>    </div>
+    <div class="col-md-6" style="text-align: center; color: #FFFFFF">
+        <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Kyrie 4s', 8000, 1)"></button>
+        <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Kyrie 4s')"></button>   </div>
+</div>
+
+<hr style="margin-left: 20em; margin-right: 20em">
+    <a name="football"></a>
+<div style="text-align: center; color: #FAFAFA;"><h3>Football</h3></div>
+
+<!--A row is created to add the images of the products. Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="nmsf.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="nmo.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="nhv.jpg" class="img-rounded ">
+    </div>
+</div>
+
+
+<!--A row is added to add the names and prices of the products. Each elements class is et to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+        <h4>Nike Mercurial SuperFly @ ₹10,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Nike Magista Obro II @ ₹19,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Nike HyperVenom III @ ₹19,000</h4>
+    </div>
+</div>
+
+<!-- A row is added to add 2 buttons which will perform the add() function and remove() function predetermined in the JavaScript source.
+    Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page-->
+<div class="row">
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Mercurial SuperFly', 10000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Mercurial SuperFly')"></button>
+        </div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike Magista Obro II', 19000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike Magista Obro II')"></button></div>
+        <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+            <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Nike HyperVenom III', 19000, 1)"></button>
+            <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Nike HyperVenom III')"></button>
+        </div>
+    </div>
+
+<!--A row is created to add the images of the products. Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="x17.1.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="c17.1.jpg" class="img-rounded ">
+    </div>
+    <div class="col-md-4" style="text-align: center; padding-top: 10px;">
+        <img src="an17.1.jpg" class="img-rounded">
+    </div>
+</div>
+
+<!--A row is added to add the names and prices of the products. Each elements class is et to col-md-4 to set the width of their column to 1/3 of the page -->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+        <h4>Adidas Nemeziz 17.1@ ₹14,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <h4>Adidas X 17.1 @ ₹12,000</h4>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF" >
+        <h4>Adidas COPA 17.1 @ ₹12,000</h4>
+    </div>
+</div>
+
+<!-- A row is added to add 2 buttons which will perform the add() function and remove() function predetermined in the JavaScript source.
+    Each elements class is set to col-md-4 to set the width of their column to 1/3 of the page-->
+<div class="row">
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF;">
+        <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Adidas Nemeziz 17.1', 14000, 1)"></button>
+        <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Adidas Nemeziz 17.1')"></button>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Adidas X 17.1', 12000, 1)"></button>
+        <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Adidas X 17.1')"></button>
+    </div>
+    <div class="col-md-4" style="text-align: center; color: #FFFFFF">
+        <button class="glyphicon glyphicon-shopping-cart btn btn-default" style="background-color: #080808" onclick="add('Adidas COPA 17.1', 12000, 1)"></button>
+        <button class="glyphicon glyphicon-remove btn btn-default" style="background-color: #080808" onclick="remove('Adidas COPA 17.1')"></button>
+    </div>
+</div>
+
+<!--This row was added to add a button which will perform the clearCart() function predetermined in the JavaScript source.
+    The elements class is set to col-md-12 to set its width to 100% of the webpage.  -->
+<div class="row">
+    <div class="col-md-12" style="text-align: center; padding-top: 14px">
+        <button class="glyphicon glyphicon-remove-sign btn btn-default" style="background-color: #FAFAFA; " onclick="clearCart()"></button>
+    </div>
+</div>
+<script>
+// A global variable cart is defined as an array
+var cart = [];
+
+// An Item is defined as an object to have 3 properties: name, cost, count
+var Item = function (name, cost, count) {
+    this.name = name
+    this.cost = cost
+    this.count = count
+};
+
+// This function is used to increase the quantity of an existing item in cart by 1
+function add(name, cost, count) {
+    var flag =false;
+    for(var i in cart){
+        if(cart[i].name === name){
+            cart[i].count += count;
+            flag = true;
+        }
+    }
+    if(!flag) {
+        var item = new Item(name, cost, count)
+        cart.push(item);
+    }
+
+// Here if the function add() is used then the following functions are execute in order
+    countCart();
+    saveCart();
+}
+
+// This function is used to reduce the quantity of an existing item in cart by 1. If the items quantity reduces to 0 it is removed from the cart
+function remove(name){
+    for(var i in cart){
+        if (cart[i].name === name) {
+            cart[i].count--;
+            if (cart[i].count === 0) {
+                cart.splice(i, 1)
+            }
+            break;
+        }
+    }
+
+// Here if the function remove() is used then the following functions are execute in order
+    countCart();
+    saveCart();
+}
+
+// This function is used to remove all items from the cart
+function clearCart(){
+    cart = [];
+
+// Here if the function clearCart() is used then the following functions are execute in order
+    countCart();
+    saveCart();
+}
+
+// This function is used to count the total number of items in the cart
+function countCart(){
+    var totalCount = 0;
+    for(var i in cart){
+        totalCount += cart[i].count;
+    }
+
+// Here the function is displayed in the navigation bar by obtaining the id of an html element.
+    document.getElementById("cart").innerHTML = totalCount;
+    return totalCount;
+}
+
+// This function is used to save the cart to the local storage so that data entered isn't lost, and it can be used in different webpages
+function saveCart() {
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+}
+
+/* This function is used to fetch the data saved to local storage. Its main purpose is to retain the data in the cart even after the page is
+refreshed and to allow data to be used in other webpages*/
+function loadCart() {
+    var x = JSON.parse(localStorage.getItem("shoppingCart"));
+    cart = x;
+    if(!cart) {
+        cart = [];
+    }
+}
+
+// These functions are executed as soon as the webpage is opened or refreshed
+loadCart();
+countCart();
+</script>
+</div>
+</body>
+</html>

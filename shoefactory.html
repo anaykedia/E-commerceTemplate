@@ -1,0 +1,103 @@
+<html>
+<head>
+<!--The <title> tag is used to set the display name which is in the tab on top of the browser -->
+    <title>
+        ShoeFactory - Home
+    </title>
+
+<!--This is used to set the Unicode Transformation format to 8 bit -->
+    <meta charset="UTF-8">
+
+<!--This is for setting the width of the webpage as the width of the devices screen in which it is viewed  -->
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+
+<!--This is for linking the CSS and JQuery to the website, However JQuery isn't used in the website -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<!--The background color of the webpage is determined in the body tag below -->
+<body style="background-color:#5e5e5e;">
+
+<!--The <nav> tag is used to create the navigation bar which is placed on top of the webpage -->
+<nav class="navbar navbar-inverse" >
+
+<!--The class container-fluid is used to set the width usage of all the elements in the tag as 100% -->
+    <div class="container-fluid">
+
+<!--The navbar-header class is used to add the headers in the navigation bar -->
+        <div class="navbar-header">
+            <a href="shoefactory.html" class="navbar-brand">ShoeFactory</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+
+<!--The class active makes the specific header look selected all the time and is used when the user is on the linked webpage-->
+                <li class="active"><a href="shoefactory.html">Home</a></li>
+                <li><a href="shoefactorystore.html">Store</a></li>
+
+<!--A dropdown list is made by the use of the class dropdown -->
+                <li class="dropdown">
+
+            </ul>
+
+<!--This is used to insert headers to the navigation bar on the right of the webpage -->
+            <ul class="nav navbar-nav navbar-right">
+                </li>
+                <li class="dropdown">
+
+<!--Here the the total number of items added to the cart is displayed, the function is predetermined in the JavaScript source -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Cart (<span id="cart" ></span>) <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Proceed to Checkout</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</nav>
+
+<!--The class container-fluid is used to set the width usage of all the elements in the tag as 100% -->
+<div class="container-fluid">
+
+<!--A row is added for adding the main homepage image. The class of the element is set to col-md-12 to set the width of the column as 100% of the webpage.
+    The background color is also set for the webpage -->
+    <div class="row" style="background:#5e5e5e;">
+        <div class="col-md-12" style="text-align: center">
+            <a href="shoefactorystore.html"><img src="image1.jpg" width="100%"></a>
+            </div>
+    </div>
+</div>
+
+<script>
+
+// A global variable cart is defined as an array
+var cart = [];
+
+// This function is used to count the total number of items in the cart
+function countCart(){
+    var totalCount = 0;
+    for(var i in cart){
+        totalCount += cart[i].count;
+    }
+
+// Here the function is displayed in the navigation bar by obtaining the id of an html element.
+    document.getElementById("cart").innerHTML = totalCount;
+    return totalCount;
+}
+
+/* This function is used to fetch the data saved to local storage. Its main purpose is to retain the data in the cart even after the page is
+refreshed and to allow data to be used in other webpages*/
+function loadCart() {
+        cart = JSON.parse(localStorage.getItem("shoppingCart"));
+
+}
+
+// These functions are executed as soon as the webpage is opened or refreshed
+loadCart();
+countCart();
+</script>
+</body>
+</html>
